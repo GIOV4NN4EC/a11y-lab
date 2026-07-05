@@ -13,8 +13,11 @@ Site 100% estático (HTML + CSS). Não há build nem dependências.
 ### GitHub Pages
 
 1. Envie o repositório para o GitHub.
-2. Em **Settings → Pages → Build and deployment**, selecione **GitHub Actions**.
-3. Faça push na branch `main` ou `master` — o workflow `.github/workflows/deploy.yml` publica automaticamente.
+2. **Obrigatório:** em **Settings → Pages → Build and deployment**, selecione **GitHub Actions** (não "Deploy from a branch").
+3. Faça push na branch `main` — o workflow `.github/workflows/deploy.yml` publica automaticamente.
+4. Se falhar com "Deployment failed, try again later", confira o passo 2 e rode o workflow manualmente em **Actions → Deploy GitHub Pages → Run workflow** (não use "Re-run" em jobs antigos).
+
+URL após o deploy: `https://SEU_USUARIO.github.io/a11y-lab/`
 
 ### Netlify
 
