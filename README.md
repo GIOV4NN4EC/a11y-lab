@@ -6,6 +6,22 @@ Ambiente estático de testes manuais para critérios WCAG 2.x:
 - **1.3.1** — Informações e Relações
 - **2.4.6** — Cabeçalhos e Rótulos
 
+## Plataforma simulada — CursoVivo
+
+Site fictício de cursos corporativos com fluxo completo:
+
+| Página | Caminho |
+|--------|---------|
+| Landing + login | `platform/index.html` |
+| Dashboard | `platform/app/dashboard.html` |
+| Catálogo | `platform/app/cursos.html` |
+| Detalhe do curso | `platform/app/curso-detalhe.html` |
+| Relatórios | `platform/app/relatorios.html` |
+| Configurações | `platform/app/configuracoes.html` |
+| Gabarito | `platform/guia-auditor.html` |
+
+Problemas de acessibilidade estão espalhados naturalmente pela interface. Use o guia do auditor para validar.
+
 ## Hospedagem
 
 Site 100% estático (HTML + CSS). Não há build nem dependências.
@@ -43,10 +59,18 @@ python3 -m http.server 8080
 ## Estrutura
 
 ```
-index.html                      # Página inicial
-1.1.1-non-text-content.html     # Critério 1.1.1
-1.3.1-info-relationships.html # Critério 1.3.1
-2.4.6-headings-labels.html      # Critério 2.4.6
+index.html                        # Hub do laboratório
+platform/                         # Plataforma simulada CursoVivo
+  index.html                      # Landing + login
+  guia-auditor.html               # Gabarito para auditores
+  app/dashboard.html              # Painel administrativo
+  app/cursos.html                 # Catálogo
+  app/curso-detalhe.html          # Página de curso
+  app/relatorios.html             # Analytics
+  app/configuracoes.html          # Perfil e notificações
+1.1.1-non-text-content.html       # Laboratório isolado
+1.3.1-info-relationships.html
+2.4.6-headings-labels.html
 styles.css
 404.html
 ```

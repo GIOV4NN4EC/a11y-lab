@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ambiente de testes WCAG com exemplos corretos e incorretos para os critérios 1.1.1, 1.3.1 e 2.4.6.">
+  <meta name="description" content="Ambiente de testes WCAG com plataforma simulada e laboratório de critérios 1.1.1, 1.3.1 e 2.4.6.">
   <meta name="theme-color" content="#0969da">
   <title>A11y Lab — Ambiente de Testes WCAG</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -12,12 +12,26 @@
 <body>
   <header>
     <h1>A11y Lab</h1>
-    <p>Ambiente de testes para critérios WCAG 2.x selecionados. Cada página contém exemplos <strong>corretos</strong> e <strong>incorretos</strong> para prática manual e inspeção com leitores de tela.</p>
+    <p>Ambiente de testes para critérios WCAG 2.x. Pratique em uma <strong>plataforma simulada</strong> ou em exercícios isolados por critério.</p>
   </header>
 
   <main>
+    <section aria-labelledby="plataforma-titulo">
+      <h2 id="plataforma-titulo">Plataforma simulada</h2>
+      <ul class="criterio-lista">
+        <li>
+          <a href="platform/index.html">
+            <span class="codigo">CursoVivo</span>
+            <span class="nome">Plataforma de cursos corporativos</span>
+          </a>
+          <p>Site completo com login, dashboard, catálogo, relatórios e configurações. Problemas de acessibilidade embutidos no fluxo real.</p>
+          <p style="margin-top:0.5rem"><a href="platform/guia-auditor.html">→ Guia do auditor (gabarito)</a></p>
+        </li>
+      </ul>
+    </section>
+
     <section aria-labelledby="criterios-titulo">
-      <h2 id="criterios-titulo">Critérios cobertos</h2>
+      <h2 id="criterios-titulo">Laboratório por critério</h2>
       <ul class="criterio-lista">
         <li>
           <a href="1.1.1-non-text-content.html">
@@ -46,11 +60,11 @@
     <section aria-labelledby="como-testar-titulo">
       <h2 id="como-testar-titulo">Como testar</h2>
       <ol>
-        <li>Abra cada página no navegador (servidor local ou arquivo direto).</li>
+        <li>Comece pela <a href="platform/index.html">plataforma CursoVivo</a> e percorra o fluxo como um usuário real.</li>
         <li>Use o inspetor de acessibilidade do DevTools (Chrome/Edge/Firefox).</li>
         <li>Navegue com leitor de tela (NVDA, JAWS, VoiceOver ou Orca).</li>
-        <li>Compare os blocos marcados como <span class="badge badge-pass">PASSA</span> vs <span class="badge badge-fail">FALHA</span>.</li>
-        <li>Anote o que o leitor anuncia em cada caso — é o critério de sucesso real.</li>
+        <li>Compare suas descobertas com o <a href="platform/guia-auditor.html">guia do auditor</a>.</li>
+        <li>Aprofunde em cada critério nas páginas do laboratório isolado.</li>
       </ol>
     </section>
   </main>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia do Auditor | CursoVivo — A11y Lab</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/platform.css">
+  <style>
+    .guia { max-width: 52rem; margin: 0 auto; padding: 2rem; }
+    .guia h1 { margin-top: 0; }
+    .guia table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin: 1rem 0 2rem; }
+    .guia th, .guia td { border: 1px solid var(--border); padding: 0.625rem 0.75rem; text-align: left; vertical-align: top; }
+    .guia th { background: var(--bg); }
+    .tag { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 0.125rem 0.5rem; border-radius: 999px; }
+    .tag-111 { background: #dbeafe; color: #1d4ed8; }
+    .tag-131 { background: #ede9fe; color: #5b21b6; }
+    .tag-246 { background: #dcfce7; color: #15803d; }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <div class="lab-banner">
+    <a href="../index.html">← A11y Lab</a> · <a href="index.html">Abrir plataforma CursoVivo</a>
+  </div>
+
+  <main class="guia">
+    <h1>Guia do Auditor — CursoVivo</h1>
+    <p>Esta plataforma fictícia contém <strong>problemas reais de acessibilidade</strong> espalhados pelo fluxo natural de uso. Use este guia para validar suas descobertas ou como gabarito em treinamentos.</p>
+
+    <h2>Fluxo sugerido de teste</h2>
+    <ol>
+      <li>Comece em <a href="index.html">platform/index.html</a> (landing + login)</li>
+      <li>Faça login com qualquer e-mail → vai para o dashboard</li>
+      <li>Navegue: Dashboard → Cursos → Detalhe do curso → Relatórios → Configurações</li>
+      <li>Teste com teclado, leitor de tela e DevTools Accessibility</li>
+    </ol>
+
+    <h2>Mapa de problemas por critério</h2>
+
+    <h3>1.1.1 — Conteúdo Não Textual</h3>
+    <table>
+      <thead>
+        <tr><th>Página</th><th>Elemento</th><th>Problema</th><th>Correção esperada</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="index.html">Landing</a></td>
+          <td>Logo no header</td>
+          <td>Imagem sem <code>alt</code></td>
+          <td><code>alt="CursoVivo"</code> ou alt vazio se decorativo com texto adjacente</td>
+        </tr>
+        <tr>
+          <td><a href="index.html">Landing</a></td>
+          <td>Ícones dos recursos</td>
+          <td>Ícones decorativos com <code>alt</code> longo e redundante</td>
+          <td><code>alt=""</code> e <code>aria-hidden="true"</code></td>
+        </tr>
+        <tr>
+          <td><a href="app/dashboard.html">Dashboard</a></td>
+          <td>Botões do topbar (sino, ajuda)</td>
+          <td>Ícones sem nome acessível</td>
+          <td><code>aria-label</code> descritivo em cada botão</td>
+        </tr>
+        <tr>
+          <td><a href="app/cursos.html">Cursos</a></td>
+          <td>Thumbnails LGPD e UX Writing</td>
+          <td>Imagens informativas sem <code>alt</code></td>
+          <td>Alt descrevendo o curso representado</td>
+        </tr>
+        <tr>
+          <td><a href="app/curso-detalhe.html">Detalhe</a></td>
+          <td>Banner do curso</td>
+          <td><code>alt="imagem do curso"</code> genérico</td>
+          <td>Alt específico: "Banner do curso Acessibilidade Web"</td>
+        </tr>
+        <tr>
+          <td><a href="app/relatorios.html">Relatórios</a></td>
+          <td>Gráfico de barras</td>
+          <td>Gráfico informativo sem alternativa</td>
+          <td>Alt resumindo tendência + tabela de dados</td>
+        </tr>
+        <tr>
+          <td><a href="app/relatorios.html">Relatórios</a></td>
+          <td>Botão exportar</td>
+          <td>Ícone sem rótulo</td>
+          <td><code>aria-label="Exportar relatório"</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>1.3.1 — Informações e Relações</h3>
+    <table>
+      <thead>
+        <tr><th>Página</th><th>Elemento</th><th>Problema</th><th>Correção esperada</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="app/dashboard.html">Dashboard</a></td>
+          <td>Tabela de alunos</td>
+          <td>Dados em <code>div</code>s, não em <code>table/th</code></td>
+          <td>Tabela semântica com <code>th scope</code></td>
+        </tr>
+        <tr>
+          <td><a href="app/dashboard.html">Dashboard</a></td>
+          <td>Atividade recente</td>
+          <td>Lista em <code>div</code>s</td>
+          <td><code>ul/li</code> ou lista semântica equivalente</td>
+        </tr>
+        <tr>
+          <td><a href="app/curso-detalhe.html">Detalhe</a></td>
+          <td>Seções do curso</td>
+          <td>Salto de <code>h1</code> para <code>h4</code></td>
+          <td>Hierarquia sequencial h2 → h3</td>
+        </tr>
+        <tr>
+          <td><a href="app/configuracoes.html">Configurações</a></td>
+          <td>Campo Departamento</td>
+          <td><code>span</code> visual sem <code>label for</code></td>
+          <td><code>label for="departamento"</code> associado ao input</td>
+        </tr>
+        <tr>
+          <td><a href="app/configuracoes.html">Configurações</a></td>
+          <td>Checkboxes de notificação</td>
+          <td>Grupo sem <code>fieldset/legend</code></td>
+          <td><code>fieldset</code> com <code>legend</code> descritiva</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2.4.6 — Cabeçalhos e Rótulos</h3>
+    <table>
+      <thead>
+        <tr><th>Página</th><th>Elemento</th><th>Problema</th><th>Correção esperada</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="index.html">Landing</a></td>
+          <td>Campo de e-mail no login</td>
+          <td>Só <code>placeholder</code>, sem <code>label</code></td>
+          <td><code>label for</code> "E-mail corporativo"</td>
+        </tr>
+        <tr>
+          <td><a href="app/dashboard.html">Dashboard</a></td>
+          <td>Busca no topbar</td>
+          <td>Campo sem rótulo</td>
+          <td><code>label</code> ou <code>aria-label</code> descritivo</td>
+        </tr>
+        <tr>
+          <td><a href="app/dashboard.html">Dashboard</a></td>
+          <td>Painel de alunos</td>
+          <td>Cabeçalho "Detalhes" vago</td>
+          <td>"Alunos em progresso" ou similar</td>
+        </tr>
+        <tr>
+          <td><a href="app/curso-detalhe.html">Detalhe</a></td>
+          <td>Card lateral</td>
+          <td>Título "Mais informações" genérico</td>
+          <td>"Inscrição no curso" ou equivalente</td>
+        </tr>
+        <tr>
+          <td><a href="app/curso-detalhe.html">Detalhe</a></td>
+          <td>Campo cupom</td>
+          <td>Label "Campo opcional"</td>
+          <td>"Cupom de desconto (opcional)"</td>
+        </tr>
+        <tr>
+          <td><a href="app/curso-detalhe.html">Detalhe</a></td>
+          <td>Botão de inscrição</td>
+          <td>Texto "OK" ambíguo</td>
+          <td>"Confirmar inscrição"</td>
+        </tr>
+        <tr>
+          <td><a href="app/configuracoes.html">Configurações</a></td>
+          <td>Seção do formulário</td>
+          <td>Cabeçalho "Dados" vago</td>
+          <td>"Informações do perfil"</td>
+        </tr>
+        <tr>
+          <td><a href="app/configuracoes.html">Configurações</a></td>
+          <td>Campo cargo</td>
+          <td>Label "Informação 1"</td>
+          <td>"Cargo" ou "Função na empresa"</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Checklist rápido</h2>
+    <ul class="checklist">
+      <li><span class="tag tag-111">1.1.1</span> Todas as imagens informativas têm alt descritivo?</li>
+      <li><span class="tag tag-111">1.1.1</span> Ícones decorativos estão ocultos do leitor de tela?</li>
+      <li><span class="tag tag-111">1.1.1</span> Botões só-ícone têm nome acessível?</li>
+      <li><span class="tag tag-131">1.3.1</span> Tabelas usam <code>table, th, td</code> com cabeçalhos?</li>
+      <li><span class="tag tag-131">1.3.1</span> Listas usam elementos de lista semânticos?</li>
+      <li><span class="tag tag-131">1.3.1</span> Campos de formulário têm label programaticamente associado?</li>
+      <li><span class="tag tag-246">2.4.6</span> Cabeçalhos de seção descrevem o conteúdo?</li>
+      <li><span class="tag tag-246">2.4.6</span> Rótulos de formulário comunicam o propósito do campo?</li>
+    </ul>
+
+    <p><a href="index.html" class="btn btn-primary">Entrar na plataforma CursoVivo</a></p>
+  </main>
+</body>
+</html>
