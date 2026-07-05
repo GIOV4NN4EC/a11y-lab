@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Testes WCAG 2.4.6 — cabeçalhos e rótulos de formulário descritivos que comunicam propósito.">
+  <meta name="theme-color" content="#0969da">
+  <title>2.4.6 — Cabeçalhos e Rótulos | A11y Lab</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="breadcrumb" aria-label="Navegação">
+    <a href="index.html">A11y Lab</a> / 2.4.6
+  </nav>
+
+  <header>
+    <h1>2.4.6 — Cabeçalhos e Rótulos</h1>
+    <p><strong>Nível AA.</strong> Cabeçalhos e rótulos descrevem o tópico ou propósito do conteúdo ou controle.</p>
+  </header>
+
+  <main>
+    <!-- Cabeçalhos de seção -->
+    <section aria-labelledby="sec-headings-titulo">
+      <h2 id="sec-headings-titulo">Cabeçalhos de seção</h2>
+
+      <article class="exemplo">
+        <div class="exemplo-header pass">PASSA — título descreve o conteúdo da seção</div>
+        <div class="exemplo-body">
+          <h3>Política de cancelamento e reembolso</h3>
+          <p>Você pode cancelar até 24 horas antes do evento e receber reembolso integral.</p>
+          <p class="exemplo-nota"><strong>Esperado:</strong> usuário que navega por cabeçalhos entende do que se trata a seção antes de ler o parágrafo.</p>
+        </div>
+      </article>
+
+      <article class="exemplo">
+        <div class="exemplo-header fail">FALHA — cabeçalho vago ou genérico</div>
+        <div class="exemplo-body">
+          <h3>Informações</h3>
+          <p>Você pode cancelar até 24 horas antes do evento e receber reembolso integral.</p>
+          <p class="exemplo-nota"><strong>Problema:</strong> "Informações", "Detalhes" ou "Mais" não comunicam o assunto; inútil na navegação por H.</p>
+        </div>
+      </article>
+
+      <article class="exemplo">
+        <div class="exemplo-header fail">FALHA — cabeçalho não relacionado ao conteúdo</div>
+        <div class="exemplo-body">
+          <h3>Promoção de verão</h3>
+          <p>Você pode cancelar até 24 horas antes do evento e receber reembolso integral.</p>
+          <p class="exemplo-nota"><strong>Problema:</strong> título enganoso — usuário espera promoção, encontra política de cancelamento.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Rótulos de formulário -->
+    <section aria-labelledby="sec-labels-titulo">
+      <h2 id="sec-labels-titulo">Rótulos de formulário</h2>
+
+      <article class="exemplo">
+        <div class="exemplo-header pass">PASSA — label descreve o propósito do campo</div>
+        <div class="exemplo-body">
+          <form>
+            <label for="cpf-pass">CPF do titular da conta</label>
+            <input type="text" id="cpf-pass" name="cpf" inputmode="numeric" autocomplete="off">
+          </form>
+          <p class="exemplo-nota"><strong>Esperado:</strong> fica claro qual CPF informar e de quem.</p>
+        </div>
+      </article>
+
+      <article class="exemplo">
+        <div class="exemplo-header fail">FALHA — label genérico</div>
+        <div class="exemplo-body">
+          <form>
+            <label for="cpf-fail">Campo 1</label>
+            <input type="text" id="cpf-fail" name="cpf">
+          </form>
+          <p class="exemplo-nota"><strong>Problema:</strong> "Campo 1" ou "Digite aqui" não explicam o que o usuário deve inserir.</p>
+        </div>
+      </article>
+
+      <article class="exemplo">
+        <div class="exemplo-header fail">FALHA — placeholder como único rótulo</div>
+        <div class="exemplo-body">
+          <form>
+            <input type="email" name="email" placeholder="E-mail">
+          </form>
+          <p class="exemplo-nota"><strong>Problema:</strong> placeholder some ao digitar, não é lido como label por todos os leitores, e não substitui <code>&lt;label&gt;</code>.</p>
+        </div>
+      </article>
+
+      <article class="exemplo">
+        <div class="exemplo-header pass">PASSA — label + placeholder complementares</div>
+        <div class="exemplo-body">
+          <form>
+            <label for="email-pass">E-mail corporativo</label>
+            <input type="email" id="email-pass" name="email" placeholder="nome@empresa.com.br" autocomplete="email">
+          </form>
+          <p class="exemplo-nota"><strong>Esperado:</strong> label define propósito; placeholder dá exemplo de formato.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Botões e controles -->
+    <section aria-labelledby="sec-controls-titulo">
+      <h2 id="sec-controls-titulo">Rótulos de controles interativos</h2>
+
+      <article class="exemplo">
+        <div class="exemplo-header pass">PASSA — botão com texto descritivo</div>
+        <div class="exemplo-body">
+          <form>
+            <label for="arquivo-pass">Anexar comprovante de residência (PDF, até 5 MB)</label>
+            <input type="file" id="arquivo-pass" name="comprovante" accept=".pdf">
+            <button type="submit">Enviar documento para análise</button>
+          </form>
+          <p class="exemplo-nota"><strong>Esperado:</strong> cada controle comunica claramente sua função.</p>
+        </div>
+      </article>
+
+      <article class="exemplo">
+        <div class="exemplo-header fail">FALHA — botão com texto ambíguo</div>
+        <div class="exemplo-body">
+          <form>
+            <label for="arquivo-fail">Comprovante</label>
+            <input type="file" id="arquivo-fail" name="comprovante">
+            <button type="submit">OK</button>
+          </form>
+          <p class="exemplo-nota"><strong>Problema:</strong> "OK", "Enviar" ou "Clique aqui" fora de contexto não descrevem a ação resultante.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Agrupamentos e legendas -->
+    <section aria-labelledby="sec-groups-titulo">
+      <h2 id="sec-groups-titulo">Legendas de grupos</h2>
+
+      <article class="exemplo">
+        <div class="exemplo-header pass">PASSA — legend descreve o conjunto de opções</div>
+        <div class="exemplo-body">
+          <form>
+            <fieldset>
+              <legend>Selecione o plano de assinatura mensal</legend>
+              <label>
+                <input type="radio" name="plano-pass" value="basico">
+                Básico — R$ 19,90/mês
+              </label>
+              <label>
+                <input type="radio" name="plano-pass" value="pro">
+                Pro — R$ 39,90/mês
+              </label>
+            </fieldset>
+          </form>
+          <p class="exemplo-nota"><strong>Esperado:</strong> legend contextualiza todas as opções do grupo.</p>
+        </div>
+      </article>
+
+      <article class="exemplo">
+        <div class="exemplo-header fail">FALHA — legend vaga</div>
+        <div class="exemplo-body">
+          <form>
+            <fieldset>
+              <legend>Opções</legend>
+              <label>
+                <input type="radio" name="plano-fail" value="basico">
+                Básico — R$ 19,90/mês
+              </label>
+              <label>
+                <input type="radio" name="plano-fail" value="pro">
+                Pro — R$ 39,90/mês
+              </label>
+            </fieldset>
+          </form>
+          <p class="exemplo-nota"><strong>Problema:</strong> "Opções" não indica sobre o que são as escolhas.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Tabelas e captions -->
+    <section aria-labelledby="sec-tables-titulo">
+      <h2 id="sec-tables-titulo">Títulos de tabelas</h2>
+
+      <article class="exemplo">
+        <div class="exemplo-header pass">PASSA — caption identifica a tabela</div>
+        <div class="exemplo-body">
+          <table>
+            <caption>Horário de atendimento da clínica — unidade Centro</caption>
+            <thead>
+              <tr>
+                <th scope="col">Dia</th>
+                <th scope="col">Horário</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Segunda a sexta</td><td>8h – 18h</td></tr>
+              <tr><td>Sábado</td><td>8h – 12h</td></tr>
+            </tbody>
+          </table>
+          <p class="exemplo-nota"><strong>Esperado:</strong> caption resume o propósito antes dos dados tabulares.</p>
+        </div>
+      </article>
+
+      <article class="exemplo">
+        <div class="exemplo-header fail">FALHA — tabela sem título descritivo</div>
+        <div class="exemplo-body">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Dia</th>
+                <th scope="col">Horário</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Segunda a sexta</td><td>8h – 18h</td></tr>
+              <tr><td>Sábado</td><td>8h – 12h</td></tr>
+            </tbody>
+          </table>
+          <p class="exemplo-nota"><strong>Problema:</strong> sem caption ou cabeçalho de seção, usuário não sabe a qual contexto os horários se referem.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="index.html">← Voltar ao índice</a></p>
+  </footer>
+</body>
+</html>

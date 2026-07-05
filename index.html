@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ambiente de testes WCAG com exemplos corretos e incorretos para os critérios 1.1.1, 1.3.1 e 2.4.6.">
+  <meta name="theme-color" content="#0969da">
+  <title>A11y Lab — Ambiente de Testes WCAG</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>A11y Lab</h1>
+    <p>Ambiente de testes para critérios WCAG 2.x selecionados. Cada página contém exemplos <strong>corretos</strong> e <strong>incorretos</strong> para prática manual e inspeção com leitores de tela.</p>
+  </header>
+
+  <main>
+    <section aria-labelledby="criterios-titulo">
+      <h2 id="criterios-titulo">Critérios cobertos</h2>
+      <ul class="criterio-lista">
+        <li>
+          <a href="1.1.1-non-text-content.html">
+            <span class="codigo">1.1.1</span>
+            <span class="nome">Conteúdo Não Textual</span>
+          </a>
+          <p>Texto alternativo para imagens, ícones, gráficos e controles visuais.</p>
+        </li>
+        <li>
+          <a href="1.3.1-info-relationships.html">
+            <span class="codigo">1.3.1</span>
+            <span class="nome">Informações e Relações</span>
+          </a>
+          <p>Estrutura semântica: tabelas, listas, formulários e hierarquia de cabeçalhos.</p>
+        </li>
+        <li>
+          <a href="2.4.6-headings-labels.html">
+            <span class="codigo">2.4.6</span>
+            <span class="nome">Cabeçalhos e Rótulos</span>
+          </a>
+          <p>Títulos e rótulos de formulário descritivos que comunicam propósito.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="como-testar-titulo">
+      <h2 id="como-testar-titulo">Como testar</h2>
+      <ol>
+        <li>Abra cada página no navegador (servidor local ou arquivo direto).</li>
+        <li>Use o inspetor de acessibilidade do DevTools (Chrome/Edge/Firefox).</li>
+        <li>Navegue com leitor de tela (NVDA, JAWS, VoiceOver ou Orca).</li>
+        <li>Compare os blocos marcados como <span class="badge badge-pass">PASSA</span> vs <span class="badge badge-fail">FALHA</span>.</li>
+        <li>Anote o que o leitor anuncia em cada caso — é o critério de sucesso real.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>WCAG 2.2 — Nível A (1.1.1, 1.3.1) e AA (2.4.6)</p>
+  </footer>
+</body>
+</html>
