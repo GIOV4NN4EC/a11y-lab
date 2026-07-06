@@ -7,5 +7,5 @@ Ambiente estático de testes manuais para critérios WCAG 2.x:
 - **2.4.6** — Cabeçalhos e Rótulos
 
 ## Portal simulado — UFAL
-Réplica educacional inspirada no site [ufal.br](https://ufal.br/), com problemas de acessibilidade embutidos para prática de auditoria:
+Réplica educacional inspirada no site [ufal.br](https://ufal.br/), com problemas de acessibilidade embutidos para prática de auditoria.
 
