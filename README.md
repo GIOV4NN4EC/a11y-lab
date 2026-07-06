@@ -18,20 +18,6 @@ Réplica educacional inspirada no site [ufal.br](https://ufal.br/), com problema
 
 Seções reproduzidas: destaques, notícias, vídeos, cursos, editais e agenda/calendário.
 
-## Plataforma simulada — CursoVivo
-
-Cenário alternativo (cursos corporativos) com fluxo completo:
-
-| Página | Caminho |
-|--------|---------|
-| Landing + login | `platform/index.html` |
-| Dashboard | `platform/app/dashboard.html` |
-| Catálogo | `platform/app/cursos.html` |
-| Detalhe do curso | `platform/app/curso-detalhe.html` |
-| Relatórios | `platform/app/relatorios.html` |
-| Configurações | `platform/app/configuracoes.html` |
-| Gabarito | `platform/guia-auditor.html` |
-
 ## Hospedagem
 
 Site 100% estático (HTML + CSS). Não há build nem dependências.
@@ -43,7 +29,10 @@ Site 100% estático (HTML + CSS). Não há build nem dependências.
 3. Faça push na branch `main` — o workflow `.github/workflows/deploy.yml` publica automaticamente.
 4. Se falhar com "Deployment failed, try again later", confira o passo 2 e rode o workflow manualmente em **Actions → Deploy GitHub Pages → Run workflow** (não use "Re-run" em jobs antigos).
 
-URL após o deploy: `https://SEU_USUARIO.github.io/a11y-lab/`
+URL após o deploy:
+
+- Hub: `https://SEU_USUARIO.github.io/a11y-lab/`
+- Portal UFAL: `https://SEU_USUARIO.github.io/a11y-lab/ufal/`
 
 ### Netlify
 
@@ -76,17 +65,10 @@ ufal/                             # Portal simulado UFAL (ufal.br)
   guia-auditor.html               # Gabarito para auditores
   css/ufal.css
   js/ufal.js
-platform/                         # Plataforma simulada CursoVivo
-  index.html                      # Landing + login
-  guia-auditor.html               # Gabarito para auditores
-  app/dashboard.html              # Painel administrativo
-  app/cursos.html                 # Catálogo
-  app/curso-detalhe.html          # Página de curso
-  app/relatorios.html             # Analytics
-  app/configuracoes.html          # Perfil e notificações
 1.1.1-non-text-content.html       # Laboratório isolado
 1.3.1-info-relationships.html
 2.4.6-headings-labels.html
 styles.css
 404.html
+.nojekyll                         # Necessário para GitHub Pages
 ```
