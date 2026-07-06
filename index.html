@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ambiente de testes WCAG com plataforma simulada e laboratório de critérios 1.1.1, 1.3.1 e 2.4.6.">
-  <meta name="theme-color" content="#0969da">
+  <meta name="description" content="Ambiente de testes WCAG baseado no portal da UFAL, com critérios 1.1.1, 1.3.1 e 2.4.6.">
+  <meta name="theme-color" content="#006837">
   <title>A11y Lab — Ambiente de Testes WCAG</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -12,19 +12,27 @@
 <body>
   <header>
     <h1>A11y Lab</h1>
-    <p>Ambiente de testes para critérios WCAG 2.x. Pratique em uma <strong>plataforma simulada</strong> ou em exercícios isolados por critério.</p>
+    <p>Ambiente de testes para critérios WCAG 2.x. Pratique em uma <strong>simulação do portal da UFAL</strong> ou em exercícios isolados por critério.</p>
   </header>
 
   <main>
     <section aria-labelledby="plataforma-titulo">
-      <h2 id="plataforma-titulo">Plataforma simulada</h2>
+      <h2 id="plataforma-titulo">Portal simulado — UFAL</h2>
       <ul class="criterio-lista">
+        <li>
+          <a href="ufal/index.html">
+            <span class="codigo">UFAL</span>
+            <span class="nome">Portal institucional (ufal.br)</span>
+          </a>
+          <p>Réplica educacional inspirada no site da Universidade Federal de Alagoas: notícias, vídeos, cursos, editais e agenda. Problemas de acessibilidade nos critérios 1.1.1, 1.3.1 e 2.4.6.</p>
+          <p style="margin-top:0.5rem"><a href="ufal/guia-auditor.html">→ Guia do auditor (gabarito)</a></p>
+        </li>
         <li>
           <a href="platform/index.html">
             <span class="codigo">CursoVivo</span>
             <span class="nome">Plataforma de cursos corporativos</span>
           </a>
-          <p>Site completo com login, dashboard, catálogo, relatórios e configurações. Problemas de acessibilidade embutidos no fluxo real.</p>
+          <p>Site fictício com login, dashboard, catálogo e relatórios. Cenário alternativo para prática avançada.</p>
           <p style="margin-top:0.5rem"><a href="platform/guia-auditor.html">→ Guia do auditor (gabarito)</a></p>
         </li>
       </ul>
@@ -60,10 +68,11 @@
     <section aria-labelledby="como-testar-titulo">
       <h2 id="como-testar-titulo">Como testar</h2>
       <ol>
-        <li>Comece pela <a href="platform/index.html">plataforma CursoVivo</a> e percorra o fluxo como um usuário real.</li>
+        <li>Comece pelo <a href="ufal/index.html">portal UFAL simulado</a> e percorra as seções como um usuário real.</li>
+        <li>Acesse <a href="ufal/editais.html">Concursos e Editais</a> para testar formulários de busca.</li>
         <li>Use o inspetor de acessibilidade do DevTools (Chrome/Edge/Firefox).</li>
         <li>Navegue com leitor de tela (NVDA, JAWS, VoiceOver ou Orca).</li>
-        <li>Compare suas descobertas com o <a href="platform/guia-auditor.html">guia do auditor</a>.</li>
+        <li>Compare suas descobertas com o <a href="ufal/guia-auditor.html">guia do auditor</a>.</li>
         <li>Aprofunde em cada critério nas páginas do laboratório isolado.</li>
       </ol>
     </section>

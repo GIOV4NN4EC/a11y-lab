@@ -6,9 +6,21 @@ Ambiente estático de testes manuais para critérios WCAG 2.x:
 - **1.3.1** — Informações e Relações
 - **2.4.6** — Cabeçalhos e Rótulos
 
+## Portal simulado — UFAL
+
+Réplica educacional inspirada no site [ufal.br](https://ufal.br/), com problemas de acessibilidade embutidos para prática de auditoria:
+
+| Página | Caminho |
+|--------|---------|
+| Página inicial | `ufal/index.html` |
+| Concursos e Editais | `ufal/editais.html` |
+| Gabarito | `ufal/guia-auditor.html` |
+
+Seções reproduzidas: destaques, notícias, vídeos, cursos, editais e agenda/calendário.
+
 ## Plataforma simulada — CursoVivo
 
-Site fictício de cursos corporativos com fluxo completo:
+Cenário alternativo (cursos corporativos) com fluxo completo:
 
 | Página | Caminho |
 |--------|---------|
@@ -19,8 +31,6 @@ Site fictício de cursos corporativos com fluxo completo:
 | Relatórios | `platform/app/relatorios.html` |
 | Configurações | `platform/app/configuracoes.html` |
 | Gabarito | `platform/guia-auditor.html` |
-
-Problemas de acessibilidade estão espalhados naturalmente pela interface. Use o guia do auditor para validar.
 
 ## Hospedagem
 
@@ -60,6 +70,12 @@ python3 -m http.server 8080
 
 ```
 index.html                        # Hub do laboratório
+ufal/                             # Portal simulado UFAL (ufal.br)
+  index.html                      # Página inicial
+  editais.html                    # Concursos e editais + filtro
+  guia-auditor.html               # Gabarito para auditores
+  css/ufal.css
+  js/ufal.js
 platform/                         # Plataforma simulada CursoVivo
   index.html                      # Landing + login
   guia-auditor.html               # Gabarito para auditores

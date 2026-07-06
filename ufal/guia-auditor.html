@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia do Auditor | UFAL — A11y Lab</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/ufal.css">
+</head>
+<body>
+  <div class="lab-banner">
+    <a href="../index.html">← A11y Lab</a> · <a href="index.html">Abrir portal UFAL simulado</a>
+  </div>
+
+  <main class="guia">
+    <h1>Guia do Auditor — Portal UFAL (simulação)</h1>
+    <p>Esta réplica educacional do portal <a href="https://ufal.br/" rel="noopener noreferrer">ufal.br</a> contém <strong>problemas reais de acessibilidade</strong> distribuídos nas páginas, para prática de auditoria nos critérios <strong>1.1.1</strong>, <strong>1.3.1</strong> e <strong>2.4.6</strong>.</p>
+
+    <h2>Fluxo sugerido de teste</h2>
+    <ol>
+      <li>Comece em <a href="index.html">ufal/index.html</a> (página inicial)</li>
+      <li>Explore as seções: destaques, notícias, vídeos, cursos, agenda</li>
+      <li>Acesse <a href="editais.html">Concursos e Editais</a> e teste o formulário de busca</li>
+      <li>Use teclado, leitor de tela (NVDA, Orca, VoiceOver) e DevTools → Accessibility</li>
+      <li>Compare com o mapa abaixo ou com as <a href="../index.html">páginas isoladas por critério</a></li>
+    </ol>
+
+    <h2>Mapa de problemas por critério</h2>
+
+    <h3>1.1.1 — Conteúdo Não Textual</h3>
+    <table>
+      <thead>
+        <tr><th>Página</th><th>Elemento</th><th>Problema</th><th>Correção esperada</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Logo no header</td>
+          <td>Imagem sem atributo <code>alt</code></td>
+          <td><code>alt="Universidade Federal de Alagoas"</code> ou <code>alt=""</code> se o texto adjacente for suficiente</td>
+        </tr>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Imagem do destaque principal</td>
+          <td>Imagem informativa sem <code>alt</code></td>
+          <td>Alt descrevendo a cena ou o evento em destaque</td>
+        </tr>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Miniaturas das notícias laterais</td>
+          <td><code>alt="imagem"</code> ou <code>alt="foto"</code> genéricos; uma sem alt</td>
+          <td>Alt específico do conteúdo ou <code>alt=""</code> se puramente decorativas</td>
+        </tr>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Botão de busca (lupa)</td>
+          <td>Ícone sem nome acessível</td>
+          <td><code>aria-label="Buscar no site"</code></td>
+        </tr>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Thumbnails dos vídeos</td>
+          <td>Imagens sem <code>alt</code></td>
+          <td>Alt com título do vídeo, ex.: "Miniatura: Giro Ufal semana de março"</td>
+        </tr>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Ícones de redes sociais no rodapé</td>
+          <td>Links só com SVG, sem rótulo</td>
+          <td><code>aria-label="UFAL no Facebook"</code> (e equivalente para cada rede)</td>
+        </tr>
+        <tr>
+          <td><a href="editais.html">Editais</a></td>
+          <td>Ícone informativo na barra lateral</td>
+          <td>Ícone decorativo com <code>alt</code> longo e redundante</td>
+          <td><code>alt=""</code> e <code>aria-hidden="true"</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>1.3.1 — Informações e Relações</h3>
+    <table>
+      <thead>
+        <tr><th>Página</th><th>Elemento</th><th>Problema</th><th>Correção esperada</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Listas de notícias (3 colunas)</td>
+          <td>Itens em <code>div</code>s, não em <code>ul/li</code></td>
+          <td>Listas semânticas com <code>ul</code> ou <code>ol</code></td>
+        </tr>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Seção Vídeos</td>
+          <td>Salto de <code>h2</code> para <code>h4</code> nos títulos dos vídeos</td>
+          <td>Hierarquia sequencial: <code>h2</code> → <code>h3</code></td>
+        </tr>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Calendário da agenda</td>
+          <td>Tabela sem <code>th</code>, <code>scope</code> nem <code>caption</code></td>
+          <td><code>caption</code>, <code>th scope="col"</code> para dias da semana</td>
+        </tr>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Rodapé — colunas Institucional e Serviços</td>
+          <td>Títulos estilizados com <code>p</code> em vez de <code>h2/h3</code></td>
+          <td>Elementos de cabeçalho com nível adequado na árvore do documento</td>
+        </tr>
+        <tr>
+          <td><a href="editais.html">Editais</a></td>
+          <td>Campos do filtro (busca, categoria, datas)</td>
+          <td><code>span</code> visual sem <code>label for</code> associado ao input</td>
+          <td><code>label for="id"</code> em cada campo</td>
+        </tr>
+        <tr>
+          <td><a href="editais.html">Editais</a></td>
+          <td>Checkboxes "Tipo de publicação"</td>
+          <td>Grupo sem <code>fieldset</code> e <code>legend</code></td>
+          <td><code>fieldset</code> com <code>legend</code> descritiva</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2.4.6 — Cabeçalhos e Rótulos</h3>
+    <table>
+      <thead>
+        <tr><th>Página</th><th>Elemento</th><th>Problema</th><th>Correção esperada</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Destaque principal</td>
+          <td>Cabeçalho "Destaque" vago</td>
+          <td>Título com o assunto da notícia, ex.: "Comissão de Ética abre seleção"</td>
+        </tr>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Coluna de notícias</td>
+          <td>Subtítulo "Mais" sem significado</td>
+          <td>Nome da editoria ou tema, ex.: "Reitoria" ou "Honrarias"</td>
+        </tr>
+        <tr>
+          <td><a href="index.html">Início</a></td>
+          <td>Campo de busca no header</td>
+          <td>Só <code>placeholder</code>, sem <code>label</code></td>
+          <td><code>label for</code> "Buscar no site" ou <code>aria-label</code> equivalente</td>
+        </tr>
+        <tr>
+          <td><a href="editais.html">Editais</a></td>
+          <td>Lista de editais</td>
+          <td>Cabeçalho "Resultados" genérico</td>
+          <td>"Editais publicados" ou "Concursos e editais em aberto"</td>
+        </tr>
+        <tr>
+          <td><a href="editais.html">Editais</a></td>
+          <td>Campos de data início e término</td>
+          <td>Ambos rotulados apenas como "Data"</td>
+          <td>"Data de início" e "Data de término"</td>
+        </tr>
+        <tr>
+          <td><a href="editais.html">Editais</a></td>
+          <td>Botão de filtro</td>
+          <td>Texto "Buscar" ambíguo fora de contexto</td>
+          <td>"Filtrar editais" ou "Aplicar filtros"</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Checklist rápido</h2>
+    <ul class="checklist">
+      <li><span class="tag tag-111">1.1.1</span> Todas as imagens informativas têm <code>alt</code> descritivo?</li>
+      <li><span class="tag tag-111">1.1.1</span> Ícones decorativos estão ocultos do leitor de tela?</li>
+      <li><span class="tag tag-111">1.1.1</span> Botões e links só-ícone têm nome acessível?</li>
+      <li><span class="tag tag-131">1.3.1</span> Tabelas usam <code>th</code> com <code>scope</code> e <code>caption</code> quando necessário?</li>
+      <li><span class="tag tag-131">1.3.1</span> Listas de notícias usam <code>ul/li</code>?</li>
+      <li><span class="tag tag-131">1.3.1</span> Campos de formulário têm <code>label</code> programaticamente associado?</li>
+      <li><span class="tag tag-131">1.3.1</span> A hierarquia de cabeçalhos é sequencial (sem saltos)?</li>
+      <li><span class="tag tag-246">2.4.6</span> Cabeçalhos de seção descrevem o conteúdo?</li>
+      <li><span class="tag tag-246">2.4.6</span> Rótulos de formulário comunicam o propósito de cada campo?</li>
+    </ul>
+
+    <p>
+      <a href="index.html" class="btn btn-primary">Abrir portal UFAL simulado</a>
+      <a href="../1.1.1-non-text-content.html" class="btn btn-secondary" style="margin-left:0.5rem">Laboratório 1.1.1</a>
+      <a href="../1.3.1-info-relationships.html" class="btn btn-secondary">Laboratório 1.3.1</a>
+      <a href="../2.4.6-headings-labels.html" class="btn btn-secondary">Laboratório 2.4.6</a>
+    </p>
+  </main>
+</body>
+</html>
