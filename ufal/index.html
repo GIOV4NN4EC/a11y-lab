@@ -7,6 +7,22 @@
   <title>Universidade Federal de Alagoas</title>
   <link rel="icon" href="img/ufal_logo.svg" type="image/svg">
   <link rel="stylesheet" href="css/ufal.css">
+  <style>
+    .main-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .main-nav li {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 <body>
   <div class="lab-banner">
@@ -29,15 +45,17 @@
       <a href="index.html" class="site-logo">
         <!-- FALHA 1.1.1: logo institucional sem texto alternativo -->
         <img src="img/ufal_logo.svg" width='60' height='60' alt="">
-        <h2>Universidade Federal de Alagoas</h2>
+        <h1>Universidade Federal de Alagoas</h1>
       </a>
 
       <nav class="main-nav">
-        <a href="#noticias">Notícias</a>
-        <a href="#videos">Vídeos</a>
-        <a href="#cursos">Cursos</a>
-        <a href="editais.html">Concursos e Editais</a>
-        <a href="#agenda">Agenda</a>
+        <ul>
+          <li><a href="#noticias">Notícias</a></li>
+          <li><a href="#videos">Vídeos</a></li>
+          <li><a href="#cursos">Cursos</a></li>
+          <li><a href="editais.html">Concursos e Editais</a></li>
+          <li><a href="#agenda">Agenda</a></li>
+        </ul>
       </nav>
 
       <div class="header-actions">
@@ -169,7 +187,6 @@
 
         <div class="video-grid">
           <article class="video-card">
-            <!-- FALHA 1.1.1: thumbnail de vídeo sem alternativa -->
             <img src="img/logojpg.jpg" width='190' height='50' alt="Logo da UFAL">
             <div class="video-card-body">
               <time datetime="2000-01-01">01/01/00</time>
